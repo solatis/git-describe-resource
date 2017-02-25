@@ -1,0 +1,11 @@
+#!/bin/bash
+
+set -e
+
+exec 3>&1
+exec 1>&2
+
+payload=$(mktemp $TMPDIR/git-describe-resource.XXXXXX)
+cat > $payload <&0
+
+echo '{"version": {"ref": "123"}}'
