@@ -4,10 +4,10 @@ RUN apk add --no-cache \
   bash \
   git \
   openssh-client \
-  ca-certificates
+  ca-certificates \
+  jq
 
-COPY assets/check /opt/resource/check
-COPY assets/in /opt/resource/in
-COPY assets/out /opt/resource/out
+RUN ln -s /usr/bin/gpg2 /usr/bin/gpg
 
+ADD assets/ /opt/resource/
 RUN chmod +x /opt/resource/*
